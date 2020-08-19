@@ -211,7 +211,7 @@ public class Camera {
         null);
   }
   
-  public void switchFlash(Boolean on) {
+  public void switchFlash(Boolean on, @NonNull final Result result) {
     try {
       cameraManager.setTorchMode(cameraName, on);
     } catch (CameraAccessException e) {
