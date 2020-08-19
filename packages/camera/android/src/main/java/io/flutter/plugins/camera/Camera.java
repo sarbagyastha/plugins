@@ -211,7 +211,7 @@ public class Camera {
         null);
   }
   
-  private void switchFlash(Boolean on){
+  public void switchFlash(Boolean on){
     cameraManager.setTorchMode(cameraName, on);
   }
 
