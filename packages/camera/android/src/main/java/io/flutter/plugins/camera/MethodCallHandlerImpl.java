@@ -125,7 +125,7 @@ final class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
         }
       case "switchFlash":
         {
-          camera.switchFlash(call.argument("on"), result);
+          camera.switchFlash(call.arguments(), result);
           break;
         }
       case "dispose":
