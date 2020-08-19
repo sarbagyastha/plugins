@@ -211,8 +211,12 @@ public class Camera {
         null);
   }
   
-  public void switchFlash(Boolean on){
-    cameraManager.setTorchMode(cameraName, on);
+  public void switchFlash(Boolean on) {
+    try {
+      cameraManager.setTorchMode(cameraName, on);
+    } catch (CameraAccessException e) {
+      result.error("cameraAccess", e.getMessage(), null);
+    }
   }
 
   private void writeToFile(ByteBuffer buffer, File file) throws IOException {
