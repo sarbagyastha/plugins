@@ -210,6 +210,10 @@ public class Camera {
         },
         null);
   }
+  
+  private void switchFlash(Boolean on){
+    cameraManager.setTorchMode(cameraName, on);
+  }
 
   private void writeToFile(ByteBuffer buffer, File file) throws IOException {
     try (FileOutputStream outputStream = new FileOutputStream(file)) {
