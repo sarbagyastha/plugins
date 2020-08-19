@@ -295,6 +295,10 @@ class CameraController extends ValueNotifier<CameraValue> {
     _creatingCompleter.complete();
     return _creatingCompleter.future;
   }
+  
+  Future<bool> switchFlash(bool on) {
+    return _channel.invokeMethod<bool>('switchFlash', on);
+  }  
 
   /// Prepare the capture session for video recording.
   ///
