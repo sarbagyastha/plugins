@@ -214,7 +214,7 @@ public class Camera {
   public void switchFlash(Boolean on, @NonNull final Result result) {
     try {
       captureRequestBuilder.set(CaptureRequest.FLASH_MODE, on ? CaptureRequest.FLASH_MODE_TORCH : CaptureRequest.FLASH_MODE_OFF);
-      captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, on ? CaptureRequest.CONTROL_AE_MODE_ON: CaptureRequest.CONTROL_AE_MODE_OFF);
+      captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON);
       cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, null);
       result.success(null);
     } catch (CameraAccessException e) {
