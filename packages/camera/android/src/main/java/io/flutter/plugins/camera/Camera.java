@@ -213,7 +213,9 @@ public class Camera {
   
   public void switchFlash(Boolean on, @NonNull final Result result) {
     try {
-      cameraManager.setTorchMode(cameraName, on);
+      captureRequestBuilder.set(CaptureRequest.FLASH_MODE, on ? CaptureRequest.FLASH_MODE_TORCH : CaptureRequest.FLASH_MODE_OFF);
+      captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, on ? CaptureRequest.CONTROL_AE_MODE_ON: CaptureRequest.CONTROL_AE_MODE_OFF);
+      cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, null);
       result.success(null);
     } catch (CameraAccessException e) {
       result.error("cameraAccess", e.getMessage(), null);
@@ -329,8 +331,6 @@ public class Camera {
               cameraCaptureSession = session;
               captureRequestBuilder.set(
                   CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
-              captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_OFF);
-              captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON);
               cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, null);
               if (onSuccessCallback != null) {
                 onSuccessCallback.run();
